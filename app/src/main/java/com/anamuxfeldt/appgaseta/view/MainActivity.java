@@ -1,8 +1,10 @@
-package com.anamuxfeldt.appgaseta;
+package com.anamuxfeldt.appgaseta.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.anamuxfeldt.appgaseta.R;
 
 public class MainActivity extends AppCompatActivity {
 
