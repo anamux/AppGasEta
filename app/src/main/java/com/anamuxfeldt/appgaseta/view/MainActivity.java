@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import com.anamuxfeldt.appgaseta.R;
 import com.anamuxfeldt.appgaseta.apoio.UtilGasEta;
+import com.anamuxfeldt.appgaseta.model.Combustivel;
 
 public class MainActivity extends AppCompatActivity {
+
+    Combustivel combustivelGasolina, combustivelEtanol;
     EditText txtGasolina, txtEtanol;
     Button btnCalcular, btnLimpar, btnSalvar,btnFinalizar;
     TextView txtResultado;
@@ -71,6 +74,22 @@ public class MainActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // TODO: 13/03/2023 Desabilitar o botão salvar. 
+                
+                combustivelGasolina = new Combustivel();
+                combustivelEtanol = new Combustivel();
+
+                combustivelGasolina.setNomeDoCombustivel("Gasolina");
+                combustivelGasolina.setPrecoDoCombustivel(precoGasolina);
+
+                combustivelEtanol.setNomeDoCombustivel("Etanol");
+                combustivelEtanol.setPrecoDoCombustivel(precoEtanol);
+
+                combustivelGasolina.setRecomendação(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
+                combustivelEtanol.setRecomendação(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
+
+                int parada = 0;
 
             }
         });
