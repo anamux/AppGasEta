@@ -8,85 +8,96 @@
     tools:context=".view.MainActivity">
 
 
-        <TextView
-            android:id="@+id/txtTitulo"
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:text="@string/gasolina_x_etanol"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/gasolina_x_etanol"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_margin="8dp"/>
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            <EditText
+                android:id="@+id/txtGasolina"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toLeftOf="@+id/txtEtanol"
+                android:ems="10"
+                android:hint="@string/hint_gasolina" />
 
+            <EditText
+                android:id="@+id/txtEtanol"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/hint_etanol"
+                android:layout_alignParentRight="true" />
 
-<androidx.appcompat.widget.LinearLayoutCompat
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginLeft="46dp"
-    >
-        <EditText
-            android:layout_width="120dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:hint="@string/hint_gasolina"
-            android:gravity="center"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <EditText
-            android:layout_width="120dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:hint="@string/hint_alcool"
-            android:gravity="center"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/calcular" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/calcular" />
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/resultado"
+        android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/txtResultado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/resultado" />
+    <Button
+        android:id="@+id/btnLimpar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/limpar" />
 
-        <Button
-            android:id="@+id/btnLimpar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/limpar" />
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/salvar" />
 
-        <Button
-            android:id="@+id/btnSalvar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/salvar" />
-
-        <Button
-            android:id="@+id/btnFinalizar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/finalizar" />
+    <Button
+        android:id="@+id/btnFinalizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/finalizar" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
