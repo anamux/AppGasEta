@@ -1,10 +1,9 @@
 package com.anamuxfeldt.appgaseta.model;
 
 public class Combustivel {
-
     private String nomeDoCombustivel;
     private double precoDoCombustivel;
-    private String recomendação;
+    private String recomendacao;
 
     public String getNomeDoCombustivel() {
         return nomeDoCombustivel;
@@ -22,11 +21,11 @@ public class Combustivel {
         this.precoDoCombustivel = precoDoCombustivel;
     }
 
-    public String getRecomendação() {
-        return recomendação;
+    public String getRecomendacao() {
+        return recomendacao;
     }
 
-    public void setRecomendação(String recomendação) {
-        this.recomendação = recomendação;
+    public void setRecomendacao(String recomendacao) {
+        this.recomendacao = recomendacao;
     }
 }

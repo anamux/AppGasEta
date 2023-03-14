@@ -12,13 +12,14 @@ import android.widget.Toast;
 
 import com.anamuxfeldt.appgaseta.R;
 import com.anamuxfeldt.appgaseta.apoio.UtilGasEta;
+import com.anamuxfeldt.appgaseta.controller.CombustivelController;
 import com.anamuxfeldt.appgaseta.model.Combustivel;
 
 public class MainActivity extends AppCompatActivity {
-
+    CombustivelController combustivelController;
     Combustivel combustivelGasolina, combustivelEtanol;
     EditText txtGasolina, txtEtanol;
-    Button btnCalcular, btnLimpar, btnSalvar,btnFinalizar;
+    Button btnCalcular, btnLimpar, btnSalvar, btnFinalizar;
     TextView txtResultado;
 
     double precoEtanol, precoGasolina;
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaseta);
+
+
+        combustivelController = new CombustivelController(MainActivity.this);
 
         txtGasolina = findViewById(R.id.txtGasolina);
         txtEtanol = findViewById(R.id.txtEtanol);
@@ -45,38 +49,38 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean isDadosOk = true;
 
-                if(TextUtils.isEmpty(txtGasolina.getText())){
+                if (TextUtils.isEmpty(txtGasolina.getText())) {
                     txtGasolina.setError("Obrigatório digitar o valor da Gasolina...");
                     txtGasolina.requestFocus();
                     isDadosOk = false;
                 }
-                if(TextUtils.isEmpty(txtEtanol.getText())){
+                if (TextUtils.isEmpty(txtEtanol.getText())) {
                     txtEtanol.setError("Obrigatório digitar o valor da Etanol...");
                     txtEtanol.requestFocus();
                     isDadosOk = false;
                 }
-                if(isDadosOk){
+                if (isDadosOk) {
                     precoGasolina = Double.parseDouble(txtGasolina.getText().toString());
                     precoEtanol = Double.parseDouble(txtEtanol.getText().toString());
 
-                    recomendacao = UtilGasEta.calcularMelhorOpcao(precoGasolina,precoEtanol);
+                    recomendacao = UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol);
 
                     txtResultado.setText(recomendacao);
 
-                }else{
+                    btnSalvar.setEnabled(true);
+
+                } else {
                     Toast.makeText(MainActivity.this, "Digite os dados obrigatórios.", Toast.LENGTH_SHORT).show();
+                    btnSalvar.setEnabled(false);
                 }
 
 
             }
         });
-
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // TODO: 13/03/2023 Desabilitar o botão salvar. 
-                
                 combustivelGasolina = new Combustivel();
                 combustivelEtanol = new Combustivel();
 
@@ -86,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
                 combustivelEtanol.setNomeDoCombustivel("Etanol");
                 combustivelEtanol.setPrecoDoCombustivel(precoEtanol);
 
-                combustivelGasolina.setRecomendação(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
-                combustivelEtanol.setRecomendação(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
+                combustivelGasolina.setRecomendacao(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
+                combustivelEtanol.setRecomendacao(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
 
+                combustivelController.salvar(combustivelGasolina);
+                combustivelController.salvar(combustivelEtanol);
                 int parada = 0;
 
             }
@@ -102,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 txtGasolina.setText("");
                 txtResultado.setText("RESULTADO");
 
+                btnSalvar.setEnabled(false);
+
+                combustivelController.limpar();
             }
         });
 
@@ -113,11 +122,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        Toast.makeText(MainActivity.this,UtilGasEta.calcularMelhorOpcao(5.12, 3.39),
+        Toast.makeText(MainActivity.this, UtilGasEta.calcularMelhorOpcao(5.12, 3.39),
                 Toast.LENGTH_LONG).show();
 
     }
