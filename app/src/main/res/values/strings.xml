@@ -8,4 +8,5 @@
     <string name="limpar">LIMPAR</string>
     <string name="salvar">SALVAR</string>
     <string name="finalizar">FINALIZAR</string>
+    <string name="qual_combust_vel_escolher">Qual combustível escolher?</string>
 </resources>
