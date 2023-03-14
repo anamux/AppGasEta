@@ -25,32 +25,39 @@
         android:layout_gravity="center"
         app:srcCompat="@mipmap/ic_launcher_foreground" />
 
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:hint="@string/hint_gasolina" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1.0"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/hint_etanol" />
+            <EditText
+                android:id="@+id/txtGasolina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:inputType="number"
+                android:hint="@string/hint_gasolina" />
+
+            <EditText
+                android:id="@+id/txtEtanol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:inputType="number"
+                android:hint="@string/hint_etanol"
+                />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnCalcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -61,7 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/resultado" />
+        android:text="@string/resultado"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnLimpar"
@@ -75,6 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:enabled="false"
         android:text="@string/salvar" />
 
     <Button
