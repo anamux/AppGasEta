@@ -15,6 +15,8 @@ import com.anamuxfeldt.appgaseta.apoio.UtilGasEta;
 import com.anamuxfeldt.appgaseta.controller.CombustivelController;
 import com.anamuxfeldt.appgaseta.model.Combustivel;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     CombustivelController combustivelController;
     Combustivel combustivelGasolina, combustivelEtanol;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     double precoEtanol, precoGasolina;
     String recomendacao;
 
+    List<Combustivel> dados;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         combustivelController = new CombustivelController(MainActivity.this);
+
+        dados = combustivelController.getListaDeDados();
+
+        Combustivel objAlteracao = dados.get(1);
+
+        objAlteracao.setNomeDoCombustivel("**Gasolina**");
+        objAlteracao.setPrecoDoCombustivel(5.97);
+        objAlteracao.setRecomendacao("**Use Gasolina");
+
+        combustivelController.deletarObjeto(2);
 
         txtGasolina = findViewById(R.id.txtGasolina);
         txtEtanol = findViewById(R.id.txtEtanol);
@@ -95,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
                 combustivelController.salvar(combustivelGasolina);
                 combustivelController.salvar(combustivelEtanol);
-                int parada = 0;
 
             }
         });
